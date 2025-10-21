@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>憩い风格网页模板</title>
+  <style>
+    body { font-family: 'Noto Sans SC', sans-serif; margin: 0; background-color: #f9f9f9; color: #333; }
+    header { background: linear-gradient(135deg, #f5b3b3, #ffdddd); padding: 40px 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 2.4em; letter-spacing: 2px; }
+    header .phone { margin-top: 10px; font-size: 1.2em; color: #d22; }
+
+    nav { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+    nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
+    nav li { margin: 0 15px; }
+    nav a { display: block; padding: 15px 10px; color: #333; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: #d22; border-bottom: 2px solid #d22; }
+
+    .container { width: 90%; max-width: 1000px; margin: 40px auto; }
+    section { margin-bottom: 60px; }
+    section h2 { border-left: 5px solid #d22; padding-left: 10px; font-size: 1.8em; margin-bottom: 20px; }
+
+    .about p, .services p, .access p { font-size: 1.1em; line-height: 1.8; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    .gallery img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .gallery img:hover { transform: scale(1.05); }
+
+    footer { background-color: #fff; text-align: center; padding: 30px 10px; color: #777; border-top: 1px solid #eee; }
+
+    .btn-top { position: fixed; bottom: 30px; right: 30px; background: #d22; color: #fff; padding: 10px 15px; border-radius: 8px; cursor: pointer; display: none; }
+    .btn-top:hover { background: #b11; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>憩い养生馆</h1>
+    <div class="phone">📞 电话：<span id="phone-num">06-6305-3545</span></div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#services">服务项目</a></li>
+      <li><a href="#gallery">环境照片</a></li>
+      <li><a href="#access">交通信息</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <section id="about" class="about">
+      <h2>关于我们</h2>
+      <p>我们提供舒适宁静的休憩环境，让每位顾客在轻松愉悦的氛围中放松身心。技师经验丰富，服务贴心，确保您获得最优质的养生体验。</p>
+    </section>
+
+    <section id="services" class="services">
+      <h2>服务项目</h2>
+      <p>・全身精油按摩（60分钟） - ¥6,000<br>
+         ・指压按摩（70分钟） - ¥7,000<br>
+         ・足底按摩（40分钟） - ¥4,000<br>
+         ・VIP套餐（90分钟） - ¥9,000</p>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <h2>环境照片</h2>
+      <img src="images/photo1.jpg" alt="店内环境1">
+      <img src="images/photo2.jpg" alt="店内环境2">
+      <img src="images/photo3.jpg" alt="店内环境3">
+    </section>
+
+    <section id="access" class="access">
+      <h2>交通信息</h2>
+      <p>地址：大阪市淀川区西中岛3丁目<br>
+         营业时间：10:00～翌1:00<br>
+         交通：御堂筋线西中岛南方站步行1分钟</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2025 憩い养生馆 | 版权所有</p>
+  </footer>
+
+  <div class="btn-top" id="backTop">↑ 返回顶部</div>
+
+  <script>
+    // 可配置项
+    const config = {
+      phoneNumber: "012-3456-7890",
+      imageList: [
+        "images/photo1.jpg",
+        "images/photo2.jpg",
+        "images/photo3.jpg",
+      ]
+    };
+
+    // 应用配置
+    document.getElementById('phone-num').textContent = config.phoneNumber;
+
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = '<h2>环境照片</h2>';
+    config.imageList.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '店内照片';
+      gallery.appendChild(img);
+    });
+
+    // 返回顶部按钮逻辑
+    const btnTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) btnTop.style.display = 'block';
+      else btnTop.style.display = 'none';
+    });
+    btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
