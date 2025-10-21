@@ -22,6 +22,7 @@
 
     .about p, .services p, .access p { font-size: 1.1em; line-height: 1.8; }
 
+    .gallery-wrapper { margin-top: 20px; }
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
     .gallery img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
     .gallery img:hover { transform: scale(1.05); }
@@ -63,11 +64,11 @@
          ・VIP套餐（90分钟） - ¥9,000</p>
     </section>
 
-    <section id="gallery" class="gallery">
+    <section id="gallery" class="gallery-section">
       <h2>环境照片</h2>
-      <img src="images/photo1.jpg" alt="店内环境1">
-      <img src="images/photo2.jpg" alt="店内环境2">
-      <img src="images/photo3.jpg" alt="店内环境3">
+      <div class="gallery-wrapper">
+        <div class="gallery"></div>
+      </div>
     </section>
 
     <section id="access" class="access">
@@ -100,7 +101,6 @@
     document.getElementById('phone-num').textContent = config.phoneNumber;
 
     const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = '<h2>环境照片</h2>';
     config.imageList.forEach(src => {
       const img = document.createElement('img');
       img.src = src;
